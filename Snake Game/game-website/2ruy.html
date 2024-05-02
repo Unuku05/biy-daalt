@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Click Counter</title>
+</head>
+<body>
+    <h1>1-р үе</h1>
+    <p>Үдэшлэгний үйл ажиллагаа аль хэдийнээ эхэлжээ.<span style="font-weight: 700;">bLitz</span> үдэшлэгний төвд дасгалжуулагчтайгаа юм ярьж байна. Чиний хамгийн түрүүнд хийх үйлдэл юу вэ?</p>
+    <button id="resetButton1">Юм олж идэх</button>
+    <button id="resetButton2">bLitz-ыг гарч ирхийг хүлээх</button>
+    <button id="setValueButton">Хүмүүс дунд уусан орж байг ажиглах</button>
+    
+
+    <script>
+    // Get reference to buttons and paragraph
+        const resetButton1 = document.getElementById("resetButton1");
+        const resetButton2 = document.getElementById("resetButton2");
+        const setValueButton = document.getElementById("setValueButton");
+        const output = document.getElementById("output");
+
+  // Initial value
+        let value = 0;
+  // Function to reset the value to 0
+        function resetValueTo0() {
+        value = 0;
+        output.textContent = "Chi barigdlaa";
+        }
+  // Function to set the value to 1 and change paragraph content
+        function setValueTo1() {
+        value =+ 1;
+        if (value === 1){
+            window.location.href = "https://www.youtube.com/watch?v=IP-GIeVOui0&list=RDaQfa1XlGcBI&index=13";
+        }
+        }
+  // Add event listeners to the buttons
+        resetButton1.addEventListener("click", resetValueTo0);
+        resetButton2.addEventListener("click", resetValueTo0);
+        setValueButton.addEventListener("click", setValueTo1);
+    </script>
+
+</body>
+</html>

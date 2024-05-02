@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Profiles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0C0B30;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .profile {
+            width: 30%;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid white;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #010023;
+        }
+
+        .profile img {
+            width: 100%;
+            border-radius: 50%;
+            height: 160px;
+            width: 160px;
+        }
+
+        .profile h2 {
+            margin-top: 0;
+            color: white;
+        }
+
+        .profile p {
+            margin-bottom: 0;
+            font-weight: 700;
+            color: white;
+        }
+        .button-30 {
+            align-items: center;
+            appearance: none;
+            background-color: #FCFCFD;
+            border-radius: 4px;
+            border-width: 0;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #36395A;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "JetBrains Mono",monospace;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-size: 18px;
+            margin-left: 1800px;
+        }
+
+        .button-30:focus {
+            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        }
+
+        .button-30:hover {
+            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            transform: translateY(-2px);
+        }
+
+        .button-30:active {
+            box-shadow: #D6D6E7 0 3px 7px inset;
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="sejigten1.jpg" alt="Person 1">
+            <h2>Да Ву Наям</h2>
+            <p>Нас: 35</p>
+            <p>Гадаад төрх: 170см өндөр, цагаан арьстай, туранхай биеийн бүтэцтэй.</p>
+            <p>Өмнөх түүх: 9/11-ний үйл ажиллагаанд Аази тивийг төлөөлж оролцсон.</p>
+            <p>Зан чанар: Архинд дуртай.</p>
+        </div>
+        <div class="profile">
+            <img src="sejigten2.jpg" alt="Person 2">
+            <h2>Няа Ум Бяа</h2>
+            <p>Нас: 30</p>
+            <p>Гадаад төрх: 160см өндөр, хөрслөг бор арьстай, булчинлаг биеийн бүтэцтэй.</p>
+            <p>Өмнөх түүх: Өндөр зэрэглэлийн хөлсний аллагууд хийж байсан.</p>
+            <p>Зан чанар: Найз охиндоо маш их хаиртай.</p>
+        </div>
+        <div class="profile">
+            <img src="sejigten3.jpg" alt="Person 3">
+            <h2>Тэм Ву Ляан</h2>
+            <p>Age: 28</p>
+            <p>Гадаад төрх: 187см, шар бор арьстай, булчинлаг биеийн бүтэцтэй, урт үстэй.</p>
+            <p>Өмнөх түүх: Монголд ирж амраад явхдаа их дэлгүүрт гал тавьж байсан.</p>
+            <p>Зан чанар: Маш их мэдлэгтэй</p>
+        </div>
+    </div>
+    <button class="button-30" onclick="goBack()">Буцах</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

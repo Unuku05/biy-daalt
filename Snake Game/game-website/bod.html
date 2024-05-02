@@ -1,0 +1,17 @@
+<script>
+    let l = [];
+let n = parseInt(prompt("Хэдэн тоо оруулах вэ?:"));
+
+for (let i = 0; i < n; i++) {
+let a = parseInt(prompt("Тоо " + (i + 1) + ":"));
+l.push(a);
+}
+
+let s = 0;
+for (let i = 0; i < n; i++) {
+s += l[i];
+}
+
+alert("Нийлбэр нь:"+s);
+
+</script>

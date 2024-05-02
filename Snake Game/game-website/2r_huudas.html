@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: #0C0B30;
+        }
+        h1{
+            color: white;
+            font-family: monospace;
+            font-size: 100px;
+            margin-left: 70%;
+        }
+        p{
+            color: white;
+            font-family: monospace;
+            text-align: right;
+            font-size: 30px;
+            margin-right: 30px;
+        }
+        .button-30 {
+            align-items: center;
+            appearance: none;
+            background-color: #FCFCFD;
+            border-radius: 4px;
+            border-width: 0;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #36395A;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "JetBrains Mono",monospace;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-size: 18px;
+            margin-left: 1300px;
+        }
+
+        .button-30:focus {
+            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        }
+
+        .button-30:hover {
+            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            transform: translateY(-2px);
+        }
+
+        .button-30:active {
+            box-shadow: #D6D6E7 0 3px 7px inset;
+            transform: translateY(2px);
+        }
+        .button-31 {
+            align-items: center;
+            appearance: none;
+            background-color: #FCFCFD;
+            border-radius: 4px;
+            border-width: 0;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #36395A;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "JetBrains Mono",monospace;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-size: 18px;
+            margin-left: 1500px;
+            margin-top: 40px;
+        }
+
+        .button-31:focus {
+            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        }
+
+        .button-31:hover {
+            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            transform: translateY(-2px);
+        }
+
+        .button-31:active {
+            box-shadow: #D6D6E7 0 3px 7px inset;
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Protect bLitz
+    </h1>
+    <p>Чи бол маш туршлагатай мөрдөгч болон тагнуулч. Чиний даалгавар бол өнөө оройн үдэшлэг дээр "The Mongolz" багийн<br>
+        тамирчин болох Гарьдмагнай буюу "bLitz"-ыг өөрийгөө мэдэгдүүлэхгүйгээр хамгаалах юм. Тэрээр 7 хонгийн дараа<br>
+        Хятал улсад аазийн аваргын төлөөх тоглолттой юм. Төрсөн нутаг дээрээ 4-н жил аваргын цолыг алдсан Хятад<br>
+        улсын сайд өнөө оройн үдэшлэгт нэгэн зүйл бэлдсэнийг манай тагнуулч мэдээлэлсэн. Түүнийг чи амь<br>
+        насаараа хамгаалах ёстой...Бид чамд сэжигтэй 3 этгээдийн<br>
+        баримтыг бэлдсэн. Даалгаварт чинь амжилт хүсье...
+    </p>
+    <button class="button-30" onclick="goToPage()">Мэдээлэлтэй танилцах</button>
+    <button class="button-31" onclick="goToLvl1()">Эхлэх</button>
+    <script>
+        function goToPage() {
+            window.location.href = "medeelel.html";
+        }
+        function goToLvl1(){
+            window.location.href = "spy game.html";
+        }
+    </script>
+</body>
+</html>
