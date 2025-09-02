@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snake Game</title>
+  <style>
+    body {
+      margin: 10.8%;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80%;
+      content: "";
+      background: linear-gradient(40deg,rgb(37, 255, 37),#57ff14,#00ff88,#00FFD5);
+    }
+
+    .game-container {
+      display: flex;
+      flex-direction: column;
+      border: 2px solid black;
+    }
+
+    .game-canvas {
+      width: 100%;
+      height: 100vw; 
+      max-width: 400px;
+      max-height: 400px;
+      margin-left: auto;
+      background-image: url(bak.png);
+      background-size: cover; 
+      background-repeat: no-repeat; 
+    }
+
+    .container {
+      margin: 10px 0;
+      display: inline-block;
+      margin-left: -125px;
+      margin-top: -100px;
+      color: white;
+      font-size:30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="game-container">
+      <canvas id="gameCanvas" class="game-canvas" width="400" height="400"></canvas>
+    </div>
+    <p class="score">Оноо: 0</p>
+    <p class="max-score">Дээд оноо: 0</p>
+    <p>Space дарж эхлүүлнэ үү!!</p>
+  </div>
+
+  <script>
+    // Оноо хариуцах объект
+    var Score = {
+      points: 0, // Одоо байгаа оноо
+      pointsMax: 0, // Тонлолтын үюд цуглуулсан хамгийн их оноо
+
+      // Одоо байгаа оноог өөрчилнө
+      updatePoints: function(newPoints) {
+        this.points = newPoints;
+      },
+
+      // Одоо байгаа оноог үхсний дараа 0 болгоно
+      resetPoints: function() {
+        this.points = 0;
+      },
+
+      // Тонлолтын үюд цуглуулсан хамгийн их оноог өөрчилнө
+      updateMaxPoints: function() {
+        if (this.points > this.pointsMax) {
+          this.pointsMax = this.points;
+        }
+      },
+
+      // Одоо байгаа оноог хадгална
+      getPoints: function() {
+        return this.points;
+      },
+
+      // Тонлолтын үюд цуглуулсан хамгийн их оноог хадгална
+      getMaxPoints: function() {
+        return this.pointsMax;
+      }
+    };
+
+    // Canvas-ы контекстийг хадгалах
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scale = 20; // Могойн томрууны хэмжээ
+    const rows = canvas.height / scale; // Могойн мөрүүдийн тоо
+    const columns = canvas.width / scale; // Могойн багануудын тоо
+    let snake; // Могой
+    let fruit; // Жимс
+    let gamePaused = true; // Тоглоом түр зогсох эсэхийг тодорхойлох хувьсагч
+
+    // Могойн функц
+    function Snake() {
+      this.x = 0; 
+      this.y = 0;
+      this.xSpeed = scale * 1; 
+      this.ySpeed = 0; 
+      this.total = 0;
+      this.tail = []; 
+
+      // Тоглоомийг түр зогсоох функц
+      this.togglePause = function() {
+        gamePaused = !gamePaused;
+      };
+
+      // Могойг зурж буй хэсгийг зурах функц
+      this.draw = () => {
+        // Могойн утгуудыг зурж буй хэсэг
+        ctx.fillStyle = "green";
+        this.tail.forEach(segment => {
+            ctx.fillRect(segment.x, segment.y, scale, scale);
+            ctx.strokeStyle = "black"; 
+            ctx.strokeRect(segment.x, segment.y, scale, scale); 
+        });
+        
+        // Могойн толгоон
+        ctx.fillStyle = "green";
+        ctx.beginPath();
+        ctx.arc(this.x + scale / 2, this.y + scale / 2, scale / 2, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = "black"; 
+        ctx.beginPath();
+        ctx.arc(this.x + scale / 2, this.y + scale / 2, scale / 2, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        // Могойн нүд
+        ctx.fillStyle = "black";
+        ctx.fillRect(this.x + scale / 3, this.y + scale / 4, scale / 8, scale / 8); 
+        ctx.fillRect(this.x + scale / 3, this.y + scale / 2, scale / 8, scale / 8); 
+      };
+      
+      //Могойн биеийг хөдөлгөж буй функц 
+      this.update = function () {
+        for (let i = 0; i < this.tail.length - 1; i++) {
+          this.tail[i] = this.tail[i + 1];
+        }
+
+        if (this.total > 0) {
+          this.tail[this.total - 1] = { x: this.x, y: this.y };
+        }
+
+        // Могойг хөдөлгөж буй хэсэг
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+
+        // Canvas хүрээнд орохгүй болгох
+        if (this.x >= canvas.width || this.y >= canvas.height || this.x < 0 || this.y < 0) {
+          this.total = 0;
+          this.tail = [];
+          Score.resetPoints();
+          this.x = 0;
+          this.y = 0;
+        }
+      };
+
+      // Могойн чиглэл шинэчлэх функц
+      this.changeDirection = function (direction) {
+        switch (direction) {
+          case 'w':
+            if (this.ySpeed !== scale * 1) {
+              this.xSpeed = 0;
+              this.ySpeed = -scale * 1;
+            }
+            break;
+          case 's':
+            if (this.ySpeed !== -scale * 1) {
+              this.xSpeed = 0;
+              this.ySpeed = scale * 1;
+            }
+            break;
+          case 'a':
+            if (this.xSpeed !== scale * 1) {
+              this.xSpeed = -scale * 1;
+              this.ySpeed = 0;
+            }
+            break;
+          case 'd':
+            if (this.xSpeed !== -scale * 1) {
+              this.xSpeed = scale * 1;
+              this.ySpeed = 0;
+            }
+            break;
+        }
+      };
+
+      // Могойн жимс идэх болон оноог нэмэгдүүлж буй хэсэг
+      this.eat = function (fruit) {
+        if (this.x === fruit.x && this.y === fruit.y) {
+          this.total++;
+          Score.updatePoints(this.total);
+          Score.updateMaxPoints();
+          return true;
+        }
+        return false;
+      };
+
+      // Могойг өөрийн сүүлийг болон хана мөргөх үюд  хийгдэх үйлдэл
+      this.checkCollision = function () {
+        for (let i = 0; i < this.tail.length; i++) {
+          if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
+            // Оноо болон могойн уртыг 0 болгож буй хэсэг
+            this.total = 0;
+            this.tail = [];
+            Score.resetPoints();
+            this.x = 0;
+            this.y = 0;
+          }
+        }
+      };
+    }
+
+    // Жимс функц
+    function Fruit() {
+      this.x; 
+      this.y; 
+      const fruitImage = new Image(); 
+      fruitImage.src = 'apple.png';
+      // Жимсийн байршлыг random-оор байрлуулж буй функц
+      this.pickLocation = function () {
+        this.x = (Math.floor(Math.random() * columns)) * scale;
+        this.y = (Math.floor(Math.random() * rows)) * scale;
+      };
+      this.draw = function () {
+        ctx.drawImage(fruitImage, this.x, this.y, scale, scale);
+      };
+    }
+
+    // Тоглоомын функц: Тоглоомыг эхлүүлнэ
+    (function setup() {
+      snake = new Snake(); 
+      fruit = new Fruit(); 
+      fruit.pickLocation(); 
+
+      // Тоглоомын гогцоо: Тоглоомыг байнга шинэчилж, үзүүлээрэй
+      window.setInterval(() => {
+        if (!gamePaused) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height); 
+          fruit.draw(); 
+          snake.update(); 
+          snake.draw(); 
+
+          // Хэрэв могой жимсийг идвэл жимсийн байршлыг нь өөрчилнө
+          if (snake.eat(fruit)) {
+            fruit.pickLocation();
+          }
+
+          snake.checkCollision(); 
+
+          // Оноог харуулах
+          document.querySelector('.score').innerText = "Оноо: " + Score.getPoints();
+          document.querySelector('.max-score').innerText = "Дээд оноо: " + Score.getMaxPoints();
+        }
+      }, 140); // Могойн хурд 140 миллисекунд
+    })();
+
+    // Утга оруулах функц
+    window.addEventListener('keydown', e => {
+      const direction = e.key.toLowerCase(); 
+      if (direction === ' ') {
+        snake.togglePause(); 
+      } else if (!gamePaused) {
+        snake.changeDirection(direction);
+      }
+    });
+  </script>
+</body>
+</html>

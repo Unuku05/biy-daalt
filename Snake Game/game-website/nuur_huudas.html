@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-image: url("background.jpg")
+        }
+        .head{
+            font-size: 60px;
+            font-family: monospace;
+            margin-top: 200px;
+            color: white;
+            text-shadow: 0px 0px 9px purple;
+            text-align: center;
+        }
+        .tailbar{
+            height: 280px;
+            width: 500px;
+            background-color: white;
+            border-radius: 30px;
+            margin: auto;
+            box-shadow: 0px 0px 60px pink;
+        }
+        .ug{
+            color: purple;
+            font-family: monospace;
+            font-size: 25px;
+            margin-top: 30px;
+            text-align: justify;
+            padding: 15px;
+            text-shadow: 0px 0px 10px pink;
+        }
+        .button-30 {
+            align-items: center;
+            appearance: none;
+            background-color: #FCFCFD;
+            border-radius: 4px;
+            border-width: 0;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #36395A;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "JetBrains Mono",monospace;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-size: 18px;
+            margin: auto;
+            text-align: center;
+        }
+        .button-30:focus {
+             box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        }
+        .button-30:hover {
+            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            transform: translateY(-2px);
+        }
+        .button-30:active {
+            box-shadow: #D6D6E7 0 3px 7px inset;
+            transform: translateY(2px);
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="head">LOFICODE-д тавтай морил</h1>
+    <div class="tailbar">
+        <p class="ug">Манай LOFICODE сайт нь таныг их хотын стрессээс 
+           хэсэгхэн зуур ч гэсэн тусгаарлах зорилготой бүтээгдсэн юм.
+           Бид таньд зориулж хэсэгхэн стресс тайлах "HTML" болон "Javascript" хэлууд дээр суурилсан 
+           lofi тоглоомнуудыг бэлдсэн байгаа.</p>
+    </div>
+    <div class="button-container">
+        <button class="button-30" role="button" onclick="openNewPage()">Эхлэх</button>
+    </div>
+    <script>
+        function openNewPage() {
+          window.open("2r_huudas.html");
+        }
+      </script>
+</body>
+</html>

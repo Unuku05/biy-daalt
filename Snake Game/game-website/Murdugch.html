@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spy Adventure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #choices button {
+            display: block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #choices button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div id="story"></div>
+    <div id="choices"></div>
+
+    <script>
+        // Game data
+        var storyData = [
+            {
+                text: "You are a secret agent on a mission to recover a stolen artifact. What's your first move?",
+                choices: [
+                    { text: "Go undercover at a gala event where the artifact may be.", next: 1 },
+                    { text: "Track down informants for leads.", next: 2 }
+                ]
+            },
+            {
+                text: "You arrive at the gala. Do you:",
+                choices: [
+                    { text: "Blend in with the crowd and observe.", next: 3 },
+                    { text: "Confront the host directly.", next: 4 }
+                ]
+            },
+            {
+                text: "You track down an informant. They offer you a tip for a price. Do you:",
+                choices: [
+                    { text: "Pay for the tip.", next: 5 },
+                    { text: "Threaten them for the information.", next: 6 }
+                ]
+            },
+            // Add more story elements as needed
+        ];
+
+        // Initial game state
+        let currentStoryIndex = 0;
+
+        // Function to display the current story text and choices
+        function displayStory() {
+            const storyElement = document.getElementById("story");
+            const choicesElement = document.getElementById("choices");
+
+            // Clear previous content
+            storyElement.innerHTML = "";
+            choicesElement.innerHTML = "";
+
+            // Display current story text
+            storyElement.innerText = storyData[currentStoryIndex].text;
+
+            // Display choices
+            storyData[currentStoryIndex].choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.innerText = choice.text;
+                button.addEventListener("click", () => {
+                    currentStoryIndex = choice.next;
+                    displayStory();
+                });
+                choicesElement.appendChild(button);
+            });
+        }
+
+        // Start the game
+        displayStory();
+    </script>
+</body>
+</html>
