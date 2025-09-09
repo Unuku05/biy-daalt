@@ -1,9 +1,16 @@
-import Image from "next/image";
-
+import Layout from "./components/layout";
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <u>hello world</u>
-    </div>
+    <>
+      <main className="p-6">
+        <Layout >
+          <h1 className="flex flex-col items-center justify-center text-center">Tale of R8 Bot</h1>
+          <p className="flex flex-col items-center justify-center text-center">
+            He plays with R8 Revolver in every CS2 match.
+          </p>
+          <p className="flex flex-col items-center justify-center text-center">He is bot in every game</p>
+        </Layout>
+      </main>
+    </>
   );
 }
