@@ -1,7 +1,7 @@
 import Header from "../components/Headers";
 import Footer from "../components/Footer";
 import styles from "./page.module.css";
-
+import Link from "next/link";
 export default function About() {
   return (
     <>
@@ -18,6 +18,9 @@ export default function About() {
           <p> Bi 2005 oni 9n sariin 21nd tursun </p>
           <p>Morin khuur togloh durtai</p>
         </section>
+        <nav>
+          <Link href="/">Home</Link>
+        </nav>
       </main>
       <Footer />
     </>
