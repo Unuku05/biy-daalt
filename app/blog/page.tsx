@@ -10,10 +10,7 @@ export default function BlogPage() {
           <li key={blog.id} className="border p-4 rounded-lg shadow">
             <h2 className="text-xl font-semibold">{blog.blogname}</h2>
             <p className="text-gray-600">{blog.description}</p>
-            <Link
-              href={`/blog/${blog.id}`}
-              className="text-blue-500 hover:underline"
-            >
+            <Link href={`/blog/${blog.id}`} className="text-blue-500 hover:underline">
               Read more
             </Link>
           </li>

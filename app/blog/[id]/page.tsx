@@ -5,7 +5,7 @@ export default function BlogDetail({ params }: { params: { id: string } }) {
   const blogId = Number(params.id);
   const blog = blogs.find((b) => b.id === blogId);
 
-  if (!blog) {
+  if (!blog) {      
     notFound();
   }
 
