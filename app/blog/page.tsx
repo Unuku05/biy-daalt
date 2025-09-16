@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Layout from "../components/layout";
 import { blogs } from "../data/blogs";
 
 export default function BlogPage() {
   return (
-    <div className="p-6">
+    <Layout>
+          <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Blog List</h1>
       <ul className="space-y-3">
         {blogs.map((blog) => (
@@ -17,5 +19,6 @@ export default function BlogPage() {
         ))}
       </ul>
     </div>
+    </Layout>
   );
 }

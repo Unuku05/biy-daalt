@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Layout from "@/app/components/layout";
 import { blogs } from "@/app/data/blogs";
 
 export default function BlogDetail({ params }: { params: { id: string } }) {
@@ -10,12 +11,14 @@ export default function BlogDetail({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="p-6">
+    <Layout>
+            <div className="p-6">
       <h1 className="text-3xl font-bold mb-2">{blog.blogname}</h1>
       <p className="text-gray-700">{blog.description}</p>
       <p className="mt-4 text-sm text-gray-500">
         Blog ID: {blog.id} - dynamically routed page
       </p>
     </div>
+    </Layout>
   );
 }
