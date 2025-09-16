@@ -13,5 +13,5 @@ export default function Docs({ params }: DocsProps) {
         </span>
       </p>
     </div>
-  );
+  );        
 }   
